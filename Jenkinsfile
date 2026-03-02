@@ -19,7 +19,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'my_sonar', variable: 'SONAR_TOKEN')]) {
                     withSonarQubeEnv('SonarQube') {
                         sh """
-                            mvn clean verify sonar:sonar \
+                            mvn package sonar:sonar \
                             -Dsonar.projectKey=jayanthtulasi_spring-petclinic \
                             -Dsonar.organization=jayanthtulasi \
                             -Dsonar.host.url=https://sonarcloud.io \
