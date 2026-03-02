@@ -7,14 +7,14 @@ pipeline {
 
     stages {
 
-        stage('Git Checkout') {
+        stage('git checkout') {
             steps {
                 git url: 'https://github.com/jayanthtulasi/spring-petclinic.git',
                     branch: 'main'
             }
         }
 
-        stage('Build & Scan') {
+        stage('build & scan') {
             steps {
                 withCredentials([string(credentialsId: 'my_sonar', variable: 'SONAR_TOKEN')]) {
                     withSonarQubeEnv('SonarQube') {
