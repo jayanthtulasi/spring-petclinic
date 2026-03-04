@@ -44,4 +44,21 @@ pipeline {
 
         }
     }
+    stage('Binary file store') {
+        steps {
+        rtUpload (
+            serverId: 'JFROG',
+            spec: '''{
+                "files": [
+                    {
+                    "pattern": "target/*.jar",
+                    "target": "spcjava-spc/"
+                    }
+                ]
+                }'''
+
+    )
+     rtPublishBuildInfo(serverId: 'JFROG') 
+     }
+    }  
 }
